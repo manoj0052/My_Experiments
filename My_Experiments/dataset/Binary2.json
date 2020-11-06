@@ -13,7 +13,8 @@
 				"fileSystem": "bronze"
 			},
 			"compression": {
-				"type": "gzip"
+				"type": "gzip",
+				"level": "Optimal"
 			}
 		}
 	}
