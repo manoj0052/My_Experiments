@@ -11,10 +11,6 @@
 			"location": {
 				"type": "AzureBlobFSLocation",
 				"fileSystem": "bronze"
-			},
-			"compression": {
-				"type": "gzip",
-				"level": "Optimal"
 			}
 		}
 	}
