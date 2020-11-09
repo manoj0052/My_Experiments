@@ -10,6 +10,10 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
+				"folderPath": {
+					"value": "@concat('abc')",
+					"type": "Expression"
+				},
 				"fileSystem": "bronze"
 			}
 		}
