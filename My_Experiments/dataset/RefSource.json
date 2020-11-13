@@ -13,7 +13,7 @@
 				"fileName": "ref_test.csv",
 				"fileSystem": "landing"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
@@ -21,7 +21,11 @@
 		},
 		"schema": [
 			{
-				"name": "CODE_ISO_2;NAME_SHORT_EN",
+				"name": "CODE_ISO_2",
+				"type": "String"
+			},
+			{
+				"name": "NAME_SHORT_EN",
 				"type": "String"
 			}
 		]
