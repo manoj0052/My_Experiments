@@ -13,12 +13,29 @@
 				"fileName": "anemia_test.csv",
 				"fileSystem": "landing"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"encodingName": "UTF-8",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
 		},
-		"schema": []
+		"schema": [
+			{
+				"name": "Indicator",
+				"type": "String"
+			},
+			{
+				"name": "Value",
+				"type": "String"
+			},
+			{
+				"name": "DHS_CountryCode",
+				"type": "String"
+			},
+			{
+				"name": "IndicatorId",
+				"type": "String"
+			}
+		]
 	}
 }
