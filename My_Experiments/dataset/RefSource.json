@@ -1,0 +1,29 @@
+{
+	"name": "RefSource",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "cicddemo1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "ref_test.csv",
+				"fileSystem": "landing"
+			},
+			"columnDelimiter": ",",
+			"encodingName": "UTF-8",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "CODE_ISO_2;NAME_SHORT_EN",
+				"type": "String"
+			}
+		]
+	}
+}
