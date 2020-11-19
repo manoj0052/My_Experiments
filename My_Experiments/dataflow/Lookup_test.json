@@ -3,10 +3,35 @@
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
-			"sources": [],
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "AnemiaSource",
+						"type": "DatasetReference"
+					},
+					"name": "anemia"
+				},
+				{
+					"dataset": {
+						"referenceName": "RefSource",
+						"type": "DatasetReference"
+					},
+					"name": "ref"
+				}
+			],
 			"sinks": [],
-			"transformations": [],
-			"script": ""
+			"transformations": [
+				{
+					"name": "Lookup"
+				},
+				{
+					"name": "ConditionalSplit1"
+				},
+				{
+					"name": "DerivedColumns"
+				}
+			],
+			"script": "source(output(\n\t\tIndicator as string,\n\t\tValue as string,\n\t\tDHS_CountryCode as string,\n\t\tIndicatorId as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> anemia\nsource(output(\n\t\tCODE_ISO_2 as string,\n\t\tNAME_SHORT_EN as string\n\t),\n\tallowSchemaDrift: true,\n\tvalidateSchema: false,\n\tignoreNoFilesFound: false) ~> ref\nanemia, ref lookup(DHS_CountryCode == CODE_ISO_2,\n\tmultiple: false,\n\tpickup: 'any',\n\tpartitionBy('hash', 1),\n\tbroadcast: 'auto')~> Lookup\nLookup split(isNull(CODE_ISO_2),\n\tdisjoint: true) ~> ConditionalSplit1@(Notvalidated, Validated)\nConditionalSplit1@Notvalidated derive(Error = 'the country code is not validated',\n\t\tFaillingCell = DHS_CountryCode) ~> DerivedColumns"
 		}
 	}
 }
